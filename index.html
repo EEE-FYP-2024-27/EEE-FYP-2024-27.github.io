@@ -20,9 +20,7 @@ function move(c, d) {
 }
 
 function readData() {
-  let response = await fetch('http://192.168.1.45/read', {
-    method: 'get'
-  });
+  let response = await fetch('http://192.168.1.45/read');
   console.log(response);
 }
   
@@ -35,5 +33,5 @@ document.addEventListener('keydown', function(event) {
    case 'd': move(0, 255); break;
  }
 });
-setInterval(function(){readData();},1000);
+setInterval(readData(),1000);
 </script>
