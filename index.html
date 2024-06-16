@@ -1,1 +1,33 @@
-HEWWO :3
+<input type="text" id="roverIP" name="roverIP">
+
+<script>
+function cmd(c){
+  var x=new XMLHttpRequest();
+  x.onreadystatechange=function(){
+    if(x.readyState==4&&x.status==200){
+      var r=JSON.parse(x.responseText);
+      id('state').textContent=r.state;
+      id('infrared').textContent=r.infrared;
+      id('radio').textContent=r.radio;
+      id('ultrasonic').textContent=r.ultrasonic;
+    }
+  };
+  x.open('GET','/'+c);
+  x.send();
+}
+function move(c, d) {
+  var x=new XMLHttpRequest();
+  x.open('GET','/move?c=' + c + '&d=' + d);
+  x.send();
+}
+function id(i){return document.getElementById(i);}
+document.addEventListener('keydown', function(event) {
+ switch(event.key) {
+   case 'w': move(255, 0); break;
+   case 's': move(-255, 0); break;
+   case 'a': move(0, -255); break;
+   case 'd': move(0, 255); break;
+ }
+});
+setInterval(function(){cmd('status');},2000);
+</script>
