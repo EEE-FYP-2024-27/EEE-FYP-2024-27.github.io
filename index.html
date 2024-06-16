@@ -20,8 +20,10 @@ function move(c, d) {
 }
 
 function readData() {
-  let response = await fetch('http://192.168.1.45/read');
-  console.log(response);
+  var x=new XMLHttpRequest();
+  x.open('GET','192.168.1.45/read');
+  x.send();
+  console.log(x.responseText);
 }
   
 function id(i){return document.getElementById(i);}
