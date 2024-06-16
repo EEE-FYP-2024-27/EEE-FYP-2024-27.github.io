@@ -17,7 +17,7 @@ function cmd(c){
 }
 function move(c, d) {
   var x=new XMLHttpRequest();
-  x.open('GET','/move?c=' + c + '&d=' + d);
+  x.open('GET','192.168.1.45/move?c=' + c + '&d=' + d);
   x.send();
 }
 function id(i){return document.getElementById(i);}
