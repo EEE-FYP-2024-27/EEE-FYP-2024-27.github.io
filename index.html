@@ -18,6 +18,14 @@ function cmd(c){
 function move(c, d) {
   fetch('http://192.168.1.45/move?c=' + c + '&d=' + d);
 }
+
+function readData() {
+  let response = await fetch('http://192.168.1.45/read', {
+    method: 'get'
+  });
+  console.log(response);
+}
+  
 function id(i){return document.getElementById(i);}
 document.addEventListener('keydown', function(event) {
  switch(event.key) {
@@ -27,5 +35,5 @@ document.addEventListener('keydown', function(event) {
    case 'd': move(0, 255); break;
  }
 });
-setInterval(function(){cmd('status');},2000);
+setInterval(function(){readData();},1000);
 </script>
