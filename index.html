@@ -16,9 +16,7 @@ function cmd(c){
   x.send();
 }
 function move(c, d) {
-  var x=new XMLHttpRequest();
-  x.open('GET','192.168.1.45/move?c=' + c + '&d=' + d);
-  x.send();
+  fetch('http://192.168.1.45/move?c=' + c + '&d=' + d);
 }
 function id(i){return document.getElementById(i);}
 document.addEventListener('keydown', function(event) {
