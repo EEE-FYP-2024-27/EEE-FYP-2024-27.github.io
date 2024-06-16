@@ -21,7 +21,7 @@ function move(c, d) {
 
 function readData() {
   var x=new XMLHttpRequest();
-  x.open('GET','192.168.1.45/read');
+  x.open('GET','http://192.168.1.45/read');
   x.send();
   console.log(x.responseText);
 }
